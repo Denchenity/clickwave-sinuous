@@ -1,0 +1,89 @@
+.block{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(240, 240, 240, 0.459);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black; 
+    overflow: hidden;
+    user-select: none;
+    transition: all 0.3s linear;
+
+    &:hover{
+        background-color: rgba(153, 148, 148, 0.342);
+    }
+    
+}
+
+$active-color: rgba(74, 44, 182, 0.459);
+$disactive-color: rgba(113, 108, 129, 0.685);
+
+.clickwave{
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+
+    &__wave{
+        position: absolute;
+
+        &.animation{
+            &.active-wave{
+                background-color: $active-color;
+            }
+            &.disactive-wave{
+                background-color: $disactive-color;
+            }
+
+            &.center{
+                left: 50%;
+                top: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                height: 100%;
+                width: 10%;
+                animation: centerwave 0.3s linear;
+            }
+            &.right{
+                right: 0;
+                height: 100%;
+                width: 10%;
+                animation: sidewave 0.3s linear;
+            }
+            &.left{
+                left: 0;
+                height: 100%;
+                width: 10%;
+                animation: sidewave 0.3s linear;
+            }
+        }
+    }
+    
+}
+
+@keyframes centerwave{
+    from{
+        width: 10%;
+    }
+    to{
+        width: 140%;
+        opacity: 0;
+        height: 150%;
+        border-radius: 50%;
+    }
+}
+@keyframes sidewave{
+    from{
+        width: 10%;
+    }
+    to{
+        width: 140%;
+        opacity: 0;
+        height: 200%;
+    }
+}
